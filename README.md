@@ -62,7 +62,7 @@ Security is the foundation of all decentralized applications. Protocol design ne
 
 • No centralized custody of user assets
 
-• User can fully control their own assets
+• Users can fully control their own assets
 
 • Application cannot censor users
 
