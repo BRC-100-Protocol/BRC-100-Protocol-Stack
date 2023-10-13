@@ -19,8 +19,8 @@ This document is intended to manage BRC-100 protocol and its extension and impro
 | -------- | ---------- | ------------------------------------------------------------ | -------- | -------------- |
 | BRC-103  | Mikael.btc | A Relay Protocol among Bitcoin, BRC-20 and BRC-100           | Ongoing  |                |
 | BRC-102  | Mikael.btc | An Automated Liquidity Protocol                              | Ongoing  |                |
-| BRC-101  | Mikael.btc | A Decentralized On-Chain Governance Protocol for BRC-100  Protocol Stack | Released | Sep. 16  2023  |
-| BRC-100  | Mikael.btc | An Extensible Decentralized Computing Protocol based on  Ordinals Theory | Released | Sep. 2  2023   |
+| [BRC-101](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/extension-protocols/BRC-101.md)  | Mikael.btc | A Decentralized On-Chain Governance Protocol for BRC-100  Protocol Stack | Released | Sep. 16  2023  |
+| [BRC-100](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/BRC-100.md)  | Mikael.btc | An Extensible Decentralized Computing Protocol based on  Ordinals Theory | Released | Sep. 2  2023   |
 
 
 As we all know, Ordinals Theory, BRC-20 and other protocols based on Bitcoin have brought a lot of imagination to the development of Bitcoin ecosystem through "on-chain declaration, off-chain resolve" mechanism. And a large number of Bitcoin NFTs and tokens have been issued, but the development of decentralized applications such as DeFi is still lagging behind. This document attempts to explore a protocol that supports decentralized computing: BRC-100, and how the protocol can be extended and improved, to create a possibility for decentralized applications based on the Bitcoin network.
