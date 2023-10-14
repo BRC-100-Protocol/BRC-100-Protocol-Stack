@@ -23,15 +23,13 @@ This document is intended to manage BRC-100 protocol and its extension and impro
 | [BRC-100](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/BRC-100.md)  | Mikael.btc | An Extensible Decentralized Computing Protocol based on  Ordinals Theory | Released | Sep. 2  2023   |
 
 
-As we all know, Ordinals Theory, BRC-20 and other protocols based on Bitcoin have brought a lot of imagination to the development of Bitcoin ecosystem through "on-chain declaration, off-chain resolve" mechanism. And a large number of Bitcoin NFTs and tokens have been issued, but the development of decentralized applications such as DeFi is still lagging behind. This document attempts to explore a protocol that supports decentralized computing: BRC-100, and how the protocol can be extended and improved, to create a possibility for decentralized applications based on the Bitcoin network.
+As we all know, [Ordinals Theory](https://docs.ordinals.com/), [BRC-20](https://domo-2.gitbook.io/brc-20-experiment/) and other protocols based on Bitcoin have brought a lot of imagination to the development of Bitcoin ecosystem through "on-chain declaration, off-chain resolve" mechanism. And a large number of Bitcoin NFTs and tokens have been issued, but the development of decentralized applications such as DeFi is still lagging behind. This document attempts to explore a protocol that supports decentralized computing: BRC-100, and how the protocol can be extended and improved, to create a possibility for decentralized applications based on the Bitcoin network.
 
-https://docs.ordinals.com/
-
-https://domo-2.gitbook.io/brc-20-experiment/
+You can check details for Ordinals and BRC-20: [Ordinals Theory](https://docs.ordinals.com/), [BRC-20](https://domo-2.gitbook.io/brc-20-experiment/).
 
 The BRC-100 protocol is an extensible decentralized computing protocol based on Ordinals Theory. BRC-100 proposes a modularity method of protocols and applications: inheritance and nesting, which provides a theoretical basis for the extension of BRC-100 protocol and applications. BRC-100 protocol essentially describes a token with computing capabilities and states. The behavior of the token is an extension of BRC-20 protocol. The computing capabilities and state transition can be extended by BRC-100 extension protocol. All BRC-100 extension protocols are compatible with each other, that is, tokens that implement BRC-100 and its extension protocols can be used in all applications. At the same time, BRC-100 protocol and its extension protocols can be updated and upgraded through improvement protocols. BRC-100 protocol and all its extension and improvement protocols are called BRC-100 protocol stack.
 
-You can find the details of BRC-100 here: https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/BRC-100.md.
+You can find the details of BRC-100 here: [BRC-100 Protocol](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/BRC-100.md).
 
 The BRC-100 protocol is based on two models: UTXO model and state machine model, which greatly extends the computing capabilities of Bitcoin. The operation of token satisfies the UTXO model, and the computation conforms to the state machine model. And BRC-100 provides new operations: burn2/burn3 and mint2/mint3, so that token can be safely converted between UTXO model and state machine model.
 
@@ -133,19 +131,19 @@ In the BRC-100 protocol, there are two ways to deploy application: one is to dep
 
 BRC-100 protocol provides three mint operators: mint, mint2, and mint3, which are used to mint token in different scenarios. When deploying applications, you need to set the number of tokens that can mint by public (using operator: "mint"). The remaining tokens will use operator: "mint" to mint.
 
-• mint: Mint from Public, public mint, anyone can mint tokens to users, but the total number mint by "mint" operator cannot exceed the settings of the max and mma attributes of the application. After mint the circulation supply of token will be increased.
+• mint: Mint from Public, public mint, anyone can mint tokens to users, but the total number mint by "mint" operator cannot exceed the settings of the max and mma attributes of the application. After mint the circulating supply of token will be increased.
 
-• mint2: Mint from Whitelist, the application records the number of users or applications that can mint, anyone can mint2 tokens to users or applications under the application rules. After mint2 the circulation supply of token will also be increased.
+• mint2: Mint from Whitelist, the application records the number of users or applications that can mint, anyone can mint2 tokens to users or applications under the application rules. After mint2 the circulating supply of token will also be increased.
 
-• mint3: Mint from State, mint3 the balance of users or applications in other applications, anyone can mint3 tokens to users or applications under the application rules. After mint3 the circulation supply of token will not be increased.
+• mint3: Mint from State, mint3 the balance of users or applications in other applications, anyone can mint3 tokens to users or applications under the application rules. After mint3 the circulating supply of token will not be increased.
 
 ### 10. Burn Token
 
 The burn is a newly introduced operation by the BRC-100 protocol. The user can inscribe the inscription of the burn operation and then transfer the inscription to the owner of the application, which is similar to the semantics of the transfer operation. Then the inscribed token will be burned or transferred to the balance of the application. Similar to the definition of mint operation, there are three burn operators: burn, burn2, and burn3, which correspond logically to mint, mint2, and mint3 respectively. No extra configuration is required, all applications/tokens support these three burn operators.
 
-• burn: Burn to Public, everyone can use the operator to burn token. After the token is burned successfully, the circulation supply will be reduced, and the burned token cannot be minted again.
+• burn: Burn to Public, everyone can use the operator to burn token. After the token is burned successfully, the circulating supply will be reduced, and the burned token cannot be minted again.
 
-• burn2: Burn to Whitelist, according to the application's preset rules, after burn2 token to application, the user's balance will be reduced, the state of the application will also be updated accordingly, the circulation supply will be reduced. In practice, the logic such as remove liquidity in AMM DEX can be realized by burn2.
+• burn2: Burn to Whitelist, according to the application's preset rules, after burn2 token to application, the user's balance will be reduced, the state of the application will also be updated accordingly, the circulating supply will be reduced. In practice, the logic such as remove liquidity in AMM DEX can be realized by burn2.
 
 • burn3: Burn to State, burn3 will reduce the user’s token balance and increase the balance of "to" application. In practice, it can be used with mint3 to complete swapping token, adding liquidity and other logic in AMM DEX.
 
