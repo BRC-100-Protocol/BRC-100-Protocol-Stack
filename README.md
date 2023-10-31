@@ -15,12 +15,22 @@
 # Introduction
 
 This document is intended to manage BRC-100 protocol and its extension and improvement protocols. The following table shows the current protocols status.
-| Protocol | Creator    | Description                                                  | Status   | Released  Time |
-| -------- | ---------- | ------------------------------------------------------------ | -------- | -------------- |
-| BRC-103  | Mikael.btc | A Relay Protocol among Bitcoin, BRC-20 and BRC-100           | Ongoing  |                |
-| BRC-102  | Mikael.btc | An Automated Liquidity Protocol                              | Ongoing  |                |
-| [BRC-101](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/extension-protocols/BRC-101.md)  | Mikael.btc | A Decentralized On-Chain Governance Protocol for BRC-100  Protocol Stack | Released | Sep. 16  2023  |
-| [BRC-100](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/BRC-100.md)  | Mikael.btc | An Extensible Decentralized Computing Protocol based on  Ordinals Theory | Released | Sep. 2  2023   |
+
+
+| Protocol                                                     | Creator    | Description                                                  | Status   | Released Time |
+| ------------------------------------------------------------ | ---------- | ------------------------------------------------------------ | -------- | ------------- |
+| BRC-111                                                      |            | A  Verification Protocol for Bitcoin Layer 2                 |          |               |
+| BRC-110                                                      |            | A  Relay Protocol among EVM Compatible Blockchains and BRC-100 |          |               |
+| BRC-109                                                      |            | A  Decentralized Exchange Protocol for Perpetual Futures     |          |               |
+| BRC-108                                                      |            | An  Automated Liquidity Protocol for Stablecoin              |          |               |
+| BRC-107                                                      |            | A  Lending Pool Protocol                                     |          |               |
+| BRC-106                                                      |            | A  Decentralized Stablecoin Pool Protocol                    |          |               |
+| BRC-105                                                      |            | An  Airdrop Protocol                                         |          |               |
+| BRC-104                                                      |            | A  Farming Pool Protocol                                     |          |               |
+| BRC-103                                                      | Mikael.btc | A  Relay Protocol among Bitcoin, BRC-20 and BRC-100          | Ongoing  |               |
+| BRC-102                                                      | Mikael.btc | An  Automated Liquidity Protocol                             | Ongoing  |               |
+| [BRC-101](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/extension-protocols/BRC-101.md) | Mikael.btc | A  Decentralized On-Chain Governance Protocol for BRC-100 Protocol Stack | Released | Sep.  16 2023 |
+| [BRC-100](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/BRC-100.md) | Mikael.btc | An  Extensible Decentralized Computing Protocol based on Ordinals Theory | Released | Sep.  2 2023  |
 
 
 As we all know, [Ordinals Theory](https://docs.ordinals.com/), [BRC-20](https://domo-2.gitbook.io/brc-20-experiment/) and other protocols based on Bitcoin have brought a lot of imagination to the development of Bitcoin ecosystem through "on-chain declaration, off-chain resolve" mechanism. And a large number of Bitcoin NFTs and tokens have been issued, but the development of decentralized applications such as DeFi is still lagging behind. This document attempts to explore a protocol that supports decentralized computing: BRC-100, and how the protocol can be extended and improved, to create a possibility for decentralized applications based on the Bitcoin network.
@@ -99,11 +109,11 @@ In the BRC-100 protocol stack, the protocol is a standard that describes the att
 
 ### 2. Protocol Inheritance
 
-The BRC-100 protocol introduces the concept of inheritance. The protocols that directly or indirectly inherit from BRC-100 are called BRC-100 extension protocols. BRC-100 extension protocols must inherit from only one protocol. The extension protocol will inherit the properties, operations and computing operations of the parent protocol, and can only extend the properties and computing operations. All tokens/applications that implement BRC-100 and its extension protocols are compatible with each other, which means that a token/application can be used in any other application/token or child application/token.
+The BRC-100 protocol introduces the concept of inheritance. The protocols that directly or indirectly inherit from BRC-100 are called BRC-100 extension protocols. BRC-100 extension protocols must inherit from only one protocol. The extension protocol will inherit the properties, operations and computing operations of the parent protocol, and can only extend the properties and computing operations. All tokens/applications that implement BRC-100 and its extension protocols are compatible with each other, which means that a token/application can be used in any other applications/tokens or child applications/tokens.
 
 ### 3. Application Nesting
 
-Applications deployed based on BRC-100 and its extension protocols can be nested, that is, another application can be created under one application, which is called child application. The ticker of the child application starts with "parent application ticker:", and multiple applications can be created under one application, to complete multiple independent computing logics. For example, in the classic AMM DEX scenario, multiple LP child applications/tokens need to be created in one DEX application.
+Applications deployed based on BRC-100 and its extension protocols can be nested, that is, another application can be created under one application, which is called child application. The ticker of the child application starts with "parent application ticker:", and multiple applications can be created under one application, to complete multiple independent computing logics. For example, in the classic AMM DEX scenario, multiple LP child applications/tokens need to be created in one DEX application, like "amm_dex:LP_BRC100_BTC".
 
 ### 4. State of Application and Address
 
@@ -111,17 +121,25 @@ Besides the UTXO model, the BRC-100 protocol also introduces the state machine m
 
 ### 5. Protocol Parameters
 
-When defining BRC-100 and its extension protocols, two parameters need to be defined: extends and openAsChild. The first one represents which protocol is inherited from, and the other represents whether all users can deploy the protocol as a child application. These two parameters are designed when defining the protocol and do not need to be set when deploying the application. For example, AMM DEX's LP Protocol, extends: BRC-100, openAsChild: true.
+When defining BRC-100 and its extension protocols, 5 parameters need to be defined: extends, upgradeFrom, openAsChild, onlyChild, stoppable, please find the explanation in the following table. These parameters are defined when defining the protocol and do not need to be set when deploying the application. For example, AMM DEX's LP Protocol: BRC-102, extends: BRC-100, upgradeFrom: --, openAsChild: true, onlyChild: No, stoppable: Yes.
+| Parameter   | Description                                       |
+| ----------- | ------------------------------------------------- |
+| extends     | Inherit  from which protocol                      |
+| upgradeFrom | Which  protocols can be upgraded to this protocol |
+| openAsChild | Can  be deployed by anyone as a child application |
+| onlyChild   | Can  only be deployed as child application        |
+| stoppable   | Can  be stopped                                   |
+
 
 ### 6. Privileges
 
-The BRC-100 protocol introduces two kinds of roles: owner and admin. The address with the application deployment inscription is called owner. The owner can follow the UTXO transfer of the deployment inscription. The owner of all child applications is the owner of the parent application. The admin is managed by the owner, and the admin cannot manage other admins. The privileges of the owner and the admin are strictly limited. They cannot censor users and can only do:  govern applications that have not started DAO, complete the computing operation of mint2/burn2. Admin can be an address or an application or a child application. An application and its child applications are each other's admin by default, no additional settings are required, but child applications are not admins of each other. The inscriptions of burn2/burn3 need to be sent to the owner of the application in order to be processed correctly.
+The BRC-100 protocol introduces two kinds of roles: owner and admin. The address with the application deployment inscription is called owner. The owner can follow the UTXO transfer of the deployment inscription. The owner of all child applications is the owner of the parent application. The admin is managed by the owner, and the admin cannot manage other admins. The privileges of the owner and the admin are strictly limited. They cannot censor users and can only do:  govern applications that have not started DAO, complete the computing operation of mint2/burn2. Admin can be an address or an application or a child application. An application and its child applications are each other's admin by default, no additional settings are required, but child applications are not admins of each other. The inscriptions of burn2/burn3 need to be sent to the deployer of the application in order to be processed correctly.
 
-The part of token needed to be mint by "mint2" can only be allocated by the application/child application logic, and the application/child application need to be the admin of the token, also "burn2" operator has similar logic. The inscriptions of burn2/burn3 need to be sent to the owner of the application in order to be processed correctly according to the logic of the computing operation.
+The part of token needed to be mint by "mint2" can only be allocated by the application/child application logic, and the application/child application need to be the admin of the token, also "burn2" operator has similar logic. The inscriptions of burn2/burn3 need to be sent to the deployer of the application in order to be processed correctly according to the logic of the computing operation.
 
 ### 7. Decentralized Governance of Application
 
-The BRC-100 protocol stack introduces a governance protocol: BRC-101, which can govern applications that implement BRC-100 or its extension protocol standard. And after the application starts DAO, governance needs to be completed through decentralized voting. The governance of application includes: update the attributes of application and child applications, create child applications, and stop application. Application governance is on-chain governance. After the voting on-chain is passed, the application should be notified through the computing operation: egov, then the application will automatically execute governance after the time lock.
+The BRC-100 protocol stack introduces a governance protocol: BRC-101, which can govern applications that implement BRC-100 or its extension protocol standard. And after the application starts DAO, governance needs to be completed through decentralized voting. The governance of application includes: update the attributes of application and child applications, deploy child applications, and stop application. Application governance is on-chain governance. After the voting on-chain is passed, the application should be notified through the computing operation: egov, then the application will automatically execute governance after the time lock.
 
 ### 8. Deploy Application/Token
 
@@ -139,7 +157,7 @@ BRC-100 protocol provides three mint operators: mint, mint2, and mint3, which ar
 
 ### 10. Burn Token
 
-The burn is a newly introduced operation by the BRC-100 protocol. The user can inscribe the inscription of the burn operation and then transfer the inscription to the owner of the application, which is similar to the semantics of the transfer operation. Then the inscribed token will be burned or transferred to the balance of the application. Similar to the definition of mint operation, there are three burn operators: burn, burn2, and burn3, which correspond logically to mint, mint2, and mint3 respectively. No extra configuration is required, all applications/tokens support these three burn operators.
+The burn is a newly introduced operation by the BRC-100 protocol. The user can inscribe the inscription of the burn operation and then transfer the inscription to the deployer of the application, which is similar to the semantics of the transfer operation. Then the inscribed token will be burned or transferred to the balance of the application. Similar to the definition of mint operation, there are three burn operators: burn, burn2, and burn3, which correspond logically to mint, mint2, and mint3 respectively. No extra configuration is required, all applications/tokens support these three burn operators.
 
 • burn: Burn to Public, everyone can use the operator to burn token. After the token is burned successfully, the circulating supply will be reduced, and the burned token cannot be minted again.
 
