@@ -105,7 +105,7 @@ This chapter will define and explain some concepts in the BRC-100 protocol to he
 
 ### 1. Protocol and Application
 
-In the BRC-100 protocol stack, the protocol is a standard that describes the attributes, operations, and computing operations of the application. The application is an instance created after the protocol is deployed to the Bitcoin network through inscriptions. The application is essentially a token with computing capabilities and state. The computing capabilities of an application are described in detail in the protocol. Without adding child applications, the application cannot have computing capabilities not described in the protocol. The added child applications can also only have the computing capabilities of the protocol, otherwise the public indexer cannot verify the state of the application, resulting in state inconsistency of user and application.
+In the BRC-100 protocol stack, the protocol is a standard that describes the attributes, states, operations, and computing operations of the application. The application is an instance created after the protocol is deployed to the Bitcoin network through inscriptions. The application is essentially a token with computing capabilities and states. The computing capabilities of an application are described in detail in the protocol. Without adding child applications, the application cannot have computing capabilities not described in the protocol. The added child applications can also only have the computing capabilities of the protocol, otherwise the public indexer cannot verify the states of the application, resulting in states inconsistency of users and applications.
 
 ### 2. Protocol Inheritance
 
