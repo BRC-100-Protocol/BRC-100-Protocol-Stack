@@ -25,19 +25,19 @@ This document is intended to manage BRC-100 protocol and its extension and impro
 | BRC-115                                                      |            | An Aggregator Protocol for Lending                           |          |               |
 | BRC-114                                                      |            | An Aggregator Protocol for Decentralized Exchange            |          |               |
 | BRC-113                                                      |            | A Launchpad Protocol for BRC-100 Assets                      |          |               |
-| BRC-112                                                      | Mikael.btc | An Asset Issuance Protocol for Administrator                 | Ongoing  |               |
+| BRC-112                                                      | Mikael.btc | An Asset Issuance Protocol for Administrator                 | Developing  |               |
 | BRC-111                                                      |            | A Verification Protocol for Bitcoin Layer 2                  |          |               |
 | BRC-110                                                      |            | A Relay Protocol among EVM Compatible Blockchains and BRC-100 |          |               |
 | BRC-109                                                      |            | A Decentralized Exchange Protocol for Perpetual Futures     |          |               |
 | BRC-108                                                      |            | An Automated Liquidity Protocol for Stablecoin              |          |               |
-| BRC-107                                                      | Mikael.btc | A Lending Pool Protocol                                     | Ongoing  |               |
-| BRC-106                                                      | Mikael.btc | A Decentralized Stablecoin Pool Protocol                    | Ongoing  |               |
-| BRC-105                                                      | Mikael.btc | An Airdrop Protocol                                         | Ongoing  |               |
-| BRC-104                                                      | Mikael.btc | A Farming Pool Protocol                                     | Ongoing  |               |
-| BRC-103                                                      | Mikael.btc | A Relay Protocol among Bitcoin, BRC-20 and BRC-100          | Ongoing  |               |
-| [BRC-102](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/extension-protocols/BRC-102.md) | Mikael.btc | An  Automated Liquidity Protocol | Released  |   Jan. 9 2024    |
-| [BRC-101](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/extension-protocols/BRC-101.md) | Mikael.btc | A  Decentralized On-Chain Governance Protocol for BRC-100 Protocol Stack | Released | Sep.  16 2023 |
-| [BRC-100](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/BRC-100.md) | Mikael.btc | An  Extensible Decentralized Computing Protocol based on Ordinals Theory | Released | Sep.  2 2023  |
+| BRC-107                                                      | Mikael.btc | A Lending Pool Protocol                                     | Developing  |               |
+| BRC-106                                                      | Mikael.btc | A Decentralized Stablecoin Pool Protocol                    | Developing  |               |
+| BRC-105                                                      | Mikael.btc | An Airdrop Protocol                                         | Developing  |               |
+| BRC-104                                                      | Mikael.btc | A Farming Pool Protocol                                     | Developing  |               |
+| BRC-103                                                      | Mikael.btc | A Relay Protocol among Bitcoin, BRC-20 and BRC-100          | Developing  |               |
+| [BRC-102](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/extension-protocols/BRC-102.md) | Mikael.btc | An  Automated Liquidity Protocol | Frozen  |   Jan. 9 2024    |
+| [BRC-101](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/extension-protocols/BRC-101.md) | Mikael.btc | A  Decentralized On-Chain Governance Protocol for BRC-100 Protocol Stack | Online | Sep.  16 2023 |
+| [BRC-100](https://github.com/BRC-100-Protocol/BRC-100-Protocol-Stack/blob/main/BRC-100.md) | Mikael.btc | An  Extensible Decentralized Computing Protocol based on Ordinals Theory | Online | Sep.  2 2023  |
 
 
 As we all know, [Ordinals Theory](https://docs.ordinals.com/), [BRC-20](https://domo-2.gitbook.io/brc-20-experiment/) and other protocols based on Bitcoin have brought a lot of imagination to the development of Bitcoin ecosystem through "on-chain declaration, off-chain resolve" mechanism. And a large number of Bitcoin NFTs and tokens have been issued, but the development of decentralized applications such as DeFi is still lagging behind. This document attempts to explore a protocol that supports decentralized computing: BRC-100, and how the protocol can be extended and improved, to create a possibility for decentralized applications based on the Bitcoin network.
